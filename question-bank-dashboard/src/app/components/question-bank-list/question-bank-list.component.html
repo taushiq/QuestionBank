@@ -1,0 +1,55 @@
+<h3>List of Question Banks</h3>
+<hr>
+<!--
+<button [ngClass]="{'btn-danger': service.pageNum===1}" [disabled]="service.pageNum===1" class="btn btn-primary" (click)="gotoPage()" >First</button> &nbsp;
+<button [ngClass]="{'btn-danger': service.pageNum===1}" [disabled]="service.pageNum===1" class="btn btn-primary" (click)="gotoPage('prev')">Previous</button> &nbsp;
+
+Showing page {{ service.pageNum }} of {{ lastPage }} &nbsp;
+
+<button [ngClass]="{'btn-danger': service.pageNum===lastPage}" [disabled]="service.pageNum===lastPage" class="btn btn-primary" (click)="gotoPage('next')">Next</button> &nbsp;
+<button [ngClass]="{'btn-danger': service.pageNum===lastPage}" [disabled]="service.pageNum===lastPage" class="btn btn-primary" (click)="gotoPage('last')" >Last</button>
+-->
+
+<button [ngClass]="getBtnClass('first')" [disabled]="service.pageNum===1" class="btn btn-primary" (click)="gotoPage()" >First</button> &nbsp;
+<button [ngClass]="getBtnClass('prev')" [disabled]="service.pageNum===1" class="btn btn-primary" (click)="gotoPage('prev')">Previous</button> &nbsp;
+
+Showing page {{ service.pageNum }} of {{ lastPage }} &nbsp;
+
+<button [ngClass]="getBtnClass('next')" [disabled]="service.pageNum===lastPage" class="btn btn-primary" (click)="gotoPage('next')">Next</button> &nbsp;
+<button [ngClass]="getBtnClass('last')" [disabled]="service.pageNum===lastPage" class="btn btn-primary" (click)="gotoPage('last')" >Last</button>
+
+<br><br>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Sl no</th>
+            <th>Question Bank Name</th>
+            <th>No of Questions</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let qbank of questionbanks; index as i">
+            <td>{{ i + 1 }}</td>
+            <!-- <td class="app-clickable" [routerLink]="['/view-details', cust.CUSTOMER_ID]">{{ cust.COMPANY_NAME }}</td> -->
+            <td class=" modify-personal app-clickable" [routerLink]= "['/view-details/', qbank.bname, qbank.author]">{{ qbank.bname }}</td>
+            <td>{{ qbank.no_of_questions }}</td>
+            <td>{{ qbank.author }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="row">
+        <span class="col"></span>
+        <button type="button" class="btn btn-primary" routerLink="/add-new-bank">Add a New Question Bank</button>
+    </div>
+    <!-- <span class="col"></span> -->
+    <!-- <button class="alert text-right" routerLink="/view-all" >Add a new Question</button> -->
+</div>
+
+<!-- round brackets arount an attribute means function binding -->
+<!-- 'click' here is an event -->
+<!-- <button class="btn btn-primary" (click)="loadMore()">Load more</button> -->

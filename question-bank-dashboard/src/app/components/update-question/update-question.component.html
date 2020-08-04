@@ -1,0 +1,101 @@
+
+
+ <h3>Update Question</h3>
+<hr>
+
+<form #frm="ngForm">
+    <div class="row">
+
+
+        <div class="col">
+
+
+            <div class="form-group">
+                <label for="que">Question</label>
+                <input id="que" #que="ngModel" name="que" type="text" [(ngModel)]="ques.question"
+                    required minlength="5" maxlength="40" class="form-control" >
+
+                <div class="text-danger" *ngIf="que.dirty && que.errors">
+                    <small *ngIf="que.errors.required">Question is mandatory</small>
+                    <small *ngIf="que.errors.minlength">Atleast 5 letters required</small><br>
+                </div>    
+            </div>
+
+            <div class="form-group">
+                <label for="one">Option One</label>
+                <input id="one" #one="ngModel" name="one" type="text" [(ngModel)]="ques.answer_one"
+                    required minlength="2" maxlength="30" class="form-control" >
+
+                <div class="text-danger" *ngIf="one.dirty && one.errors">
+                    <small *ngIf="one.errors.required">Above field is mandatory</small>
+                    <small *ngIf="one.errors.minlength">Atleast 2 letters required</small><br>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="two">Option Two</label>
+                <input id="two" #two="ngModel" name="two" type="text" [(ngModel)]="ques.answer_two"
+                    required minlength="2" maxlength="30" class="form-control" >
+
+                <div class="text-danger" *ngIf="two.dirty && two.errors">
+                    <small *ngIf="two.errors.required">Above field is mandatory</small>
+                    <small *ngIf="two.errors.minlength">Atleast 2 letters required</small><br>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="three">Option Three</label>
+                <input id="three" #three="ngModel" name="three" type="text" [(ngModel)]="ques.answer_three"
+                    required minlength="2" maxlength="30" class="form-control" >
+
+                <div class="text-danger" *ngIf="three.dirty && three.errors">
+                    <small *ngIf="three.errors.required">Above field is mandatory</small>
+                    <small *ngIf="three.errors.minlength">Atleast 2 letters required</small><br>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="four">Option Four</label>
+                <input id="four" #four="ngModel" name="four" type="text" [(ngModel)]="ques.answer_four"
+                    required minlength="2" maxlength="30" class="form-control">
+
+                <div class="text-danger" *ngIf="four.dirty && four.errors">
+                    <small *ngIf="four.errors.required">Above field is mandatory</small>
+                    <small *ngIf="four.errors.minlength">Atleast 2 letters required</small><br>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="cans">Correct Answer(1-4)</label>
+                <input id="cans" #cans="ngModel" name="cans" type="text" [(ngModel)]="ques.correct_answer"
+                     required class="form-control" pattern="[1-4]{1}">
+
+                <div class="text-danger" *ngIf="cans.dirty && cans.errors">
+                    <small *ngIf="cans.errors.required">Above field is mandatory</small>
+                    <small *ngIf="cans.errors.pattern">Only 1-4 Numbers allowed</small>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <div>
+                    <button type="button" class="col-sm-0.7 btn btn-primary" (click)="save()">Back</button>
+                    <span class="col"></span>
+                    <button class="btn btn-primary" [disabled]="frm.invalid" [ngClass]="{'btn-warning': frm.invalid}"
+                        (click)="save()">Submit</button>
+                </div>
+                <br>
+            </div> 
+        </div>
+
+        <div class="col">
+
+        </div>
+
+            
+
+
+
+    </div>
+</form>
+

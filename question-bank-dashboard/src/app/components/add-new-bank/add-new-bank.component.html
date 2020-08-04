@@ -1,0 +1,57 @@
+<h3>Add Question Bank</h3>
+<hr>
+
+<!-- frm is a reference to the entire form -->
+<form #frm="ngForm">
+    <div class="row">
+
+
+        <div class="col">
+
+
+            <div class="form-group">
+                <label for="bName">Question Bank Name</label>
+                <input id="bName" #bName="ngModel" name="bName" type="text" [(ngModel)]="qBank.bname"
+                    required minlength="5" maxlength="40" class="form-control" pattern="[a-zA-Z]*" >
+
+                <div class="text-danger" *ngIf="bName.dirty && bName.errors">
+                    <small *ngIf="bName.errors.required">Question Bank id is mandatory</small>
+                    <small *ngIf="bName.errors.minlength">Atleast 5 letters required</small><br>
+                    <small *ngIf="bName.errors.pattern">Only Alphabets allowed</small>
+                </div>    
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input id="author" #author="ngModel" name="author" type="text" [(ngModel)]="qBank.author"
+                    required minlength="5" maxlength="30" class="form-control" pattern="[a-zA-Z]*">
+
+                <div class="text-danger" *ngIf="author.dirty && author.errors">
+                    <small *ngIf="author.errors.required">Author name is mandatory</small>
+                    <small *ngIf="author.errors.minlength">Atleast 5 letters required</small><br>
+                    <small *ngIf="author.errors.pattern">Only Alphabets allowed</small>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <div>
+                    <button type="button" class="col-sm-0.7 btn btn-primary" routerLink="/view-all">Back</button>
+                    <span class="col"></span>
+                    <button class="btn btn-primary" [disabled]="frm.invalid" [ngClass]="{'btn-warning': frm.invalid}"
+                        (click)="save()">Submit</button>
+                </div>
+            </div> 
+        </div>
+
+        <div class="col">
+
+        </div>
+
+            
+
+
+
+    </div>
+</form>
+

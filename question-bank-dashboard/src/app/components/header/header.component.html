@@ -1,0 +1,17 @@
+<div class="alert alert-primary">
+    <div class="container">
+        <h1>Question Bank Dashboard</h1>
+    </div>
+</div>
+
+<div class="container">
+    <button routerLink="/home" class="btn btn-link">Home</button> |
+
+    <span *ngIf="authService.isUserLoggedIn">
+        <button routerLink="/view-all" class="btn btn-link">View all</button>
+        <button (click)="logout()" class="btn btn-link">Logout</button>
+    </span>
+    <button *ngIf="!authService.isUserLoggedIn" routerLink="/login" class="btn btn-link">Login</button>
+
+
+</div>

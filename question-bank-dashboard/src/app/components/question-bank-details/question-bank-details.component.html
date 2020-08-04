@@ -1,0 +1,57 @@
+<h3>Question Bank details</h3>
+<hr>
+
+<!-- show this div when 'cust' is undefined
+<div class="text-center" *ngIf="questions===undefined">
+    <img src="/assets/images/loading.gif" alt="loading...">
+</div> -->
+
+
+<!-- show this div when 'cust' is available -->
+<div class="container" *ngIf="questions!==undefined">
+    <div class="row">
+        <h5 class="col-md-6 alert ">You are viewing the details of the Question Bank: {{ bankName }}</h5>
+        <h5 class="col-md-6 alert text-right">Total number of Questions: {{ count }}</h5>
+    </div>
+
+
+    <div  *ngFor="let q of questions; index as i">
+        <div class="row">
+            <h5 class="col-md-12 alert alert-secondary">{{i+1}}. &nbsp; {{ q.question }}</h5>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <h5 class="alert"> A. &nbsp; {{ q.answer_one }}</h5>
+                <h5 class="alert"> C. &nbsp; {{ q.answer_three }}</h5>
+            </div>
+            <div class="col">
+                <h5 class="alert"> B. &nbsp; {{ q.answer_two }}</h5>
+                <h5 class="alert"> D. &nbsp; {{ q.answer_four }}</h5>
+            </div>
+            <div class="container">
+                <h5 class="alert">Correct Answer: Option {{q.correct_answer | option}}</h5>
+            </div>
+            <div>
+                <button type="button" class="col-sm-0.7 btn btn-primary " [routerLink]="['/update-question/',q]">Edit</button>
+                <span class="col"></span>
+                <button class="btn btn-primary" (click)="delete(q.question)">Delete</button>
+            </div>
+            <br><br><br>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        
+        <span class="col"></span>
+        <button type="button" class="col-sm-0.7 mr-4 btn btn-primary" routerLink="/view-all">Back</button>
+        <button type="button" class="col-sm-0.7 mr-4 btn btn-primary" (click) = "deleteBank()">Delete this Question Bank</button>
+        <!-- <button class="alert text-right" routerLink="/view-all" >Add a new Question</button> -->
+        <button type="button" class="col-sm-0.7 btn btn-primary" [routerLink]= "['/add-question']">Add a New Question</button>
+    </div>
+    <br><br>
+</div>
