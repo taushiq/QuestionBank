@@ -48,9 +48,9 @@ export class QuestionBankDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(p => {
           this.service.getQuestionBank(p['bname'],p['author'])
              .subscribe(resp => {
-              console.log('response',resp.data);
+              //console.log('response',resp.data);
               this.questions = resp.data;
-              console.log('data',this.questions)
+              //console.log('data',this.questions)
               // this.totalCustomers = resp.count;
               this.count = resp.count;
               this.bankName = resp.name;

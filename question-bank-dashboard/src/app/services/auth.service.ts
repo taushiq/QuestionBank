@@ -27,7 +27,8 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     password = md5(password);
     return this.http
-      .post('http://localhost:3000/login', { email, password })
+      .post('https://question-bank-rest.herokuapp.com/login', { email, password })
+      //.post('http://localhost:3000/login', { email, password })
       .do(data => this.token = data['token'])
       .do(data => window.sessionStorage.setItem('token', data['token']));
   }

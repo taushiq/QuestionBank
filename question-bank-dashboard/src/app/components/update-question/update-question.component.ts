@@ -29,7 +29,7 @@ export class UpdateQuestionComponent implements OnInit {
   }
 
   save(): void{
-    console.log(this.ques);
+    //console.log(this.ques);
     
     this.service.addNewQuestion(this.ques,this.service.bname,this.service.author)
     .subscribe(

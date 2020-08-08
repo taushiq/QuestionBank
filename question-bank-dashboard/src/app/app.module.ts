@@ -17,8 +17,14 @@ import { AddNewQuestionComponent } from './components/add-new-question/add-new-q
 import { DeleteQuestionComponent } from './components/delete-question/delete-question.component';
 import { UpdateQuestionComponent } from './components/update-question/update-question.component';
 import { LoginComponent } from './components/login/login.component';
+import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
+import { QuestionPaperTypeComponent } from './components/question-paper-type/question-paper-type.component';
+import { SelectQuestionsComponent } from './components/select-questions/select-questions.component';
+import { RandomFinalComponent } from './components/random-final/random-final.component';
+import { ManualFinalComponent } from './components/manual-final/manual-final.component';
+import { PaperDetailsComponent } from './components/paper-details/paper-details.component';
 
-;
+
 
 // a 'Route' is an object that contains 'path'->'Component' mapping
 // a 'path' is nothing but a URI segment
@@ -67,8 +73,26 @@ const routeConfig: Array<Route> = [
   {
     path: 'delete-question',
     component: DeleteQuestionComponent
-    
-
+  },
+  {
+    path: 'question-paper-home',
+    component: QuestionPaperComponent
+  },
+  {
+    path: 'question-paper-type',
+    component: QuestionPaperTypeComponent
+  },
+  {
+    path: 'select-questions',
+    component: SelectQuestionsComponent
+  },
+  {
+    path: 'random-final',
+    component: RandomFinalComponent
+  },
+  {
+    path: 'manual-final',
+    component: ManualFinalComponent
   },
 //   {
 //     path: 'pipes-demo',
@@ -77,6 +101,10 @@ const routeConfig: Array<Route> = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'paper-details',
+    component: PaperDetailsComponent
   },
   {
     // this is the default route handler; must be the last one.
@@ -99,7 +127,13 @@ const routeConfig: Array<Route> = [
     AddNewQuestionComponent,
     DeleteQuestionComponent,
     UpdateQuestionComponent,
-    LoginComponent
+    LoginComponent,
+    QuestionPaperComponent,
+    QuestionPaperTypeComponent,
+    SelectQuestionsComponent,
+    RandomFinalComponent,
+    ManualFinalComponent,
+    PaperDetailsComponent
   ],
   imports: [
     BrowserModule,

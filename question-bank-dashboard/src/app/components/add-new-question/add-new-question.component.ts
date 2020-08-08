@@ -14,6 +14,8 @@ export class AddNewQuestionComponent implements OnInit {
   // enters details in the textboxes (due to [(ngModel)] two-way data binding)
   question: any = {};
   questionDummy: any = {};
+  bname: string;
+  author: string;
 
   constructor(private service: QuestionBankService,
     private router: Router, private activatedRoute: ActivatedRoute,
@@ -29,6 +31,8 @@ export class AddNewQuestionComponent implements OnInit {
   //     //console.log('Here ',this.question);
   //     //this.service.deleteQuestion(this.question.question).subscribe();
   // });
+  this.bname = this.service.bname;
+  this.author = this.service.author;
 }
 
   

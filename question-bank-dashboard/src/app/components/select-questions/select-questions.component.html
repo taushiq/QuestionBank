@@ -1,0 +1,31 @@
+<br>
+<h3>Select the Questions You want to include in the question paper</h3>
+<br>
+
+<table class=" table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Question</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let q of questions; index as i">
+            <td><form #frm="ngForm"><input  type="checkbox" (change)="onChange(q,$event.target.checked)" id="defaultCheck1"></form></td>
+            <td>{{ q.question }}</td>
+            <td>{{ q.author }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="row">
+        <span class="col"></span>
+        <button type="button" class="btn btn-primary mr-3" routerLink="/question-paper-type">Back</button>
+        <button type="button" class="btn btn-primary" [disabled]="service.finalQuestions.length===0" routerLink="/paper-details">Submit</button>
+    </div>
+    <!-- <span class="col"></span> -->
+    <!-- <button class="alert text-right" routerLink="/view-all" >Add a new Question</button> -->
+</div>

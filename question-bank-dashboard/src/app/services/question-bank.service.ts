@@ -6,8 +6,8 @@ import { AuthService } from './auth.service';
 import 'rxjs/add/operator/map'; // npm i rxjs-compat
 // import { AuthService } from './auth.service';
 
-const baseUrl = 'http://localhost:3000/questionbanks';
-
+//const baseUrl = 'http://localhost:3000/questionbanks';
+const baseUrl = 'https://question-bank-rest.herokuapp.com/questionbanks';
 
 // injectables are singletons (Angular creates a single instance of this class)
 @Injectable({
@@ -17,6 +17,15 @@ export class QuestionBankService {
   bname: string;
   author: string;
   pageNum: number = 1;
+  names: Array<any> = [];
+  authors: Array<any> = [];
+  questionBanks: Array<any> = [];
+  type:number;
+  finalQuestions: Array<any> = [];
+  heading:string;
+  subHeading:string;
+  noOfQuestions:number;
+  tempquestions: Array<any> = [];
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -66,6 +75,26 @@ export class QuestionBankService {
         };
     return this.http
       .get(baseUrl + '?page=' + pageNum, options);
+  }
+
+  getAllQuestionBanksNoLimit(): Observable<any> {
+    const options = {
+          headers: {
+            'authorization': 'Bearer ' + this.authService.token
+          }
+        };
+    return this.http
+      .get('https://question-bank-rest.herokuapp.com/questionbanks/getall', options);
+  }
+
+  getSelectedQuestions(): Observable<any> {
+    const options = {
+          headers: {
+            'authorization': 'Bearer ' + this.authService.token
+          }
+        };
+    return this.http
+      .get(`https://question-bank-rest.herokuapp.com/questionbanks/get-selected/${this.names}/${this.authors}`, options);
   }
 
   // getOneCustomer(custId: string): Observable<any> {

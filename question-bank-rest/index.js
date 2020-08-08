@@ -24,6 +24,8 @@ app.use(require('./middlewares/auth'));
 
 //to get all the question banks
 app.get('/questionbanks', require('./handlers/get-all-question-banks'));
+app.get('/questionbanks/getall', require('./handlers/get-all-question-banks-no-limit'));
+app.get('/questionbanks/get-selected/:names/:authors', require('./handlers/get-selected-questions'));
 //adding question banks
 app.post('/questionbanks/addquestionbank', require('./handlers/add-new-question-bank'));
 app.post('/questionbanks/addquestion/:bname/:author', require('./handlers/add-new-question'));

@@ -77,7 +77,7 @@
             <div class="form-group">
                 <label>&nbsp;</label>
                 <div>
-                    <button type="button" class="col-sm-0.7 btn btn-primary" routerLink="/view-all">Back</button>
+                    <button type="button" class="col-sm-0.7 btn btn-primary" [routerLink]="['/view-details', bname, author]">Back</button>
                     <span class="col"></span>
                     <button class="btn btn-primary" [disabled]="frm.invalid" [ngClass]="{'btn-warning': frm.invalid}"
                         (click)="save()">Submit</button>

@@ -1,0 +1,135 @@
+<br>
+<h3>You have selected the following Question Banks</h3>
+<br>
+
+<table class=" table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Sl No</th>
+            <th>Question Bank Name</th>
+            <th>No of Questions</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let qbank of questionbanks; index as i">
+            <td> {{i+1}}</td>
+            <!-- <td class="app-clickable" [routerLink]="['/view-details', cust.CUSTOMER_ID]">{{ cust.COMPANY_NAME }}</td> -->
+            <td>{{ qbank.bname }}</td>
+            <td>{{ qbank.no_of_questions }}</td>
+            <td>{{ qbank.author }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<h6>Total No of Questions: {{count}}</h6>
+<br>
+
+<div *ngIf="count===0">
+    <br>
+    <h4 class="alert text-danger text-center">There are no questions to be added. Please go back and select the Questions Banks which has questions.</h4>
+
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary"  routerLink="/question-paper-home">Go Back to the previous Page</button>
+            </div>
+            <br>
+            
+    
+</div>
+
+<div *ngIf="count>0">
+<br>
+<h4>Please choose the method of selecting questions from the selected Question Banks</h4>
+<br>
+
+<form #frm="ngForm" (ngSubmit)="save()">
+    <div class="row">
+
+
+        <div class="col">
+
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios"  [(ngModel)]="exampleRadios" id="exampleRadios1" [value]="1"  (change)="onChangeOne($event.target.checked)">
+                    <label class="form-check-label" for="exampleRadios1">
+                      Randomly Select Questions
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios"  [(ngModel)]="exampleRadios" id="exampleRadios2" [value]="2" (change)="onChangeTwo($event.target.checked)">
+                    <label class="form-check-label" for="exampleRadios2">
+                      Choose the questions manually
+                    </label>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                
+    
+            </div>
+
+
+        </div> 
+
+
+
+        <div class="col"></div>
+
+    </div>
+
+    <div *ngIf="exampleRadios === 1">
+        <br>
+        <h4>Please choose the number of questions to be included in the Question Paper</h4>
+        <br>
+        <div class="row" >
+            <div class="form-group col-md-3">
+                <label for="que">No of Questions</label>
+                <input id="que" #que="ngModel" name="que" type="number" [(ngModel)]="noOfQuestions"
+                     required  min="1" max="{{count}}" class="form-control"  >
+
+                <div class="text-danger" *ngIf="que.dirty && que.errors">
+                    <small *ngIf="que.errors.required">Above field is mandatory</small>
+                    <small *ngIf="noOfQuestions>count">Please do not exceed the no of questions available</small>
+                </div>    
+                <small class = "text-danger" *ngIf="noOfQuestions>count">Please do not exceed available questions</small>
+                <small class = "text-danger" *ngIf="noOfQuestions < 1">No of Questions cannot be less than 1</small>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+
+
+    
+    <div class="container">
+        <div class="row">
+            <span class="col"></span>
+            <button  class="btn btn-primary mr-3" routerLink="/question-paper-home">Back</button>
+            <button type="submit" *ngIf="service.type === 2" class="btn btn-primary mr-3" [disabled]="(exampleRadios !== 1 && exampleRadios !== 2) || frm.invalid || noOfQuestions>count " routerLink="/select-questions">Next</button>
+            <button type="submit" *ngIf="service.type === 1" class="btn btn-primary" [disabled]="(exampleRadios !== 1 && exampleRadios !== 2) || frm.invalid || noOfQuestions>count || noOfQuestions < 1" (click)="save()" routerLink="/paper-details">Next</button>
+        </div>
+        <!-- <span class="col"></span> -->
+        <!-- <button class="alert text-right" routerLink="/view-all" >Add a new Question</button> -->
+    </div>
+
+    
+
+
+
+</form>
+
+
+
+
+
+
+
+</div>

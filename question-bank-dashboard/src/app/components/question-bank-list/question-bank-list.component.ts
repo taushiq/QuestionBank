@@ -29,9 +29,9 @@ export class QuestionBankListComponent implements OnInit {
   loadData() {
     this.service.getAllQuestionBanks(this.service.pageNum)
       .subscribe(resp => {
-        console.log('response',resp.data);
+        //console.log('response',resp.data);
         this.questionbanks = resp.data;
-        console.log('data',this.questionbanks)
+        //console.log('data',this.questionbanks)
         // this.totalCustomers = resp.count;
         this.lastPage = resp.count % 5 === 0 ? resp.count / 5 : Math.trunc(resp.count / 5) + 1;
       })
